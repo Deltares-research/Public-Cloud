@@ -11,6 +11,7 @@ to make a request with the URL.
 import argparse
 import logging
 import boto3
+from botocore.client import Config
 from botocore.exceptions import ClientError
 import requests
 
@@ -53,7 +54,13 @@ def usage_demo():
     parser.add_argument("action", choices=("get", "put"), help="The action to perform.")
     args = parser.parse_args()
 
-    s3_client = boto3.client("s3")
+    s3_client = boto3.client('s3',
+                    endpoint_url='https://s3.deltares.nl',
+                    aws_access_key_id='<<ACCESS KEY ID>>',
+                    aws_secret_access_key='<<SECRET ACCESS KEY>>',
+                    config=Config(signature_version='s3v4'),
+                    region_name='eu-west-1')
+
     client_action = "get_object" if args.action == "get" else "put_object"
     url = generate_presigned_url(
         s3_client, client_action, {"Bucket": args.bucket, "Key": args.key}, 1000
