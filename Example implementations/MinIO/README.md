@@ -50,3 +50,21 @@ To create an access and secret key go to https://s3-console.deltares.nl/browser
 After logging in, go to "Access Keys" and click "Create Access Key".
 
 Store your access and secret key somewhere safe.
+
+## Machine Learning example
+
+See an example on how to use data from MinIO / S3 in a machine learning environment.
+
+## Docker container
+
+To run a Docker container locally you need Docker Desktop installed: https://www.docker.com/products/docker-desktop/
+
+Before building the container add your bucket name and credentials in the python script (/docker_example/upload_file_to_minio.py)
+
+To build the container execute the following command:
+
+    docker build -t s3-upload .
+
+To run the container execute the following command:
+
+    docker run s3-upload
