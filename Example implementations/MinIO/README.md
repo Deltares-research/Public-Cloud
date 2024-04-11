@@ -41,7 +41,12 @@ To connect to the high-level interface, you’ll follow a similar approach, but 
     import boto3
     s3_resource = boto3.resource('s3')
 
-You’ve successfully connected to both versions, but now you might be wondering, “Which one should I use?”
-
 In the FileIOExample.ipynb Jupyter Notebook you will be able to see how to connect succesfully to an existing MinIO bucket.
 
+## How to create an access key
+
+To create an access and secret key go to https://s3-console.deltares.nl/browser 
+
+After logging in, go to "Access Keys" and click "Create Access Key".
+
+Store your access and secret key somewhere safe.
